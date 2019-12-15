@@ -2,11 +2,11 @@
 
 Implementation of the paper Real-time Semantic Segmentation of Crop and Weed for Precision Agriculture Robots Leveraging Background Knowledge in CNNs [[link]](https://arxiv.org/abs/1709.06764)
 
-## Code Requirements
+### Code Requirements
 You can install Conda for python which resolves all the dependencies for machine learning.  
 **pip install requirements.txt**
 
-## Dataset
+### Dataset
 Dataset URL - [http://www.ipb.uni-bonn.de/data/sugarbeets2016/](http://www.ipb.uni-bonn.de/data/sugarbeets2016/)
 ```
 @article{chebrolu2017ijrr,
@@ -17,7 +17,7 @@ year = {2017}
 doi = {10.1177/0278364917720510},
 }
 ```
-## Data Preprocessing
+### Data Preprocessing
 - The dataset was not uniform and it needed to be processed so that all the Original RGB images and Groudtruth images would match each other.
 - The Groudtruth images were segmented in different classes and we needed only the classes - `crop, weed and background`. The classes that were not required were converted to the background class.
 - So the next step was to generate all the annotations from the groundtruth.
@@ -26,7 +26,7 @@ doi = {10.1177/0278364917720510},
 - Refer the `prepareData.py` for further processing.
 
 
-## Model Working
+### Model Working
 **CNN based Encoder - Decoder Network with Residual Blocks.**  
 This type of model comprises of two major parts – `encoder & decoder`. The encoder takes the input image and converts it into a feature volume in the latent space. This feature volume is then fed to the decoder to output the segmented image. `Residual blocks` formed the building blocks of ResNet. They are also called skip connections which forward the activations of a previous layer to a deeper layer. This helps in training very deep neural networks faster and avoids the issue of increasing error when more layers are introduced in a network.  
   
@@ -34,10 +34,9 @@ The input to this model is an RGB image that is stacked with 11 more channels li
 The output is an RGB segmented image of crop, weed, and background.  
 Refer the `model.py` for the same.
 
-## Results
-
-
-
-
+### Results
+Input Image             |       Groundtruth Image      |  Predicted Image
+:-------------------------:|:-------------------------:|:-------------------------:
+![](Results/Input.png)  |  ![](Results/Groundtruth.png) | ![](Results/Predicted.png) 
 
 
